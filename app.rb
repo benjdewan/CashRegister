@@ -29,7 +29,7 @@ class App
     false
   end
 
-  def read_file(filename) #rubocop Disable:MethodLength
+  def read_file(filename) # rubocop:disable MethodLength
     change_array = []
     CSV.foreach(filename) do |row|
       next unless well_formed?(row)
@@ -49,7 +49,7 @@ class App
 
   def process_input(filename)
     begin
-      change_array = read_file(filename)
+      read_file(filename)
     rescue Errno::ENOENT
       $stderr.puts "'#{filename}' does not exist"
       usage
