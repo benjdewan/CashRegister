@@ -4,7 +4,6 @@ $LOAD_PATH << File.dirname(__FILE__) + '/lib'
 require 'coin'
 require 'coin_array'
 require 'csv'
-require 'optparse'
 
 # Extension method on String
 class String
