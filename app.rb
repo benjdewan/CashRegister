@@ -58,8 +58,24 @@ class App
     @change ||= process_input(ARGV[0])
   end
 
+  # This unindent function is from:
+  # https://docwhat.org/unindenting-heredocs-ruby/
+  def unindent(string)
+    first = string[/\A\s*/]
+    string.gsub(/^#{Regexp.quote first}/, '')
+  end
+
   def usage
-    $stderr.puts 'Usage: /path/to/change/app.rb <input_csv>'
+    $stderr.puts unindent <<-EOF
+      Usage: /path/to/change/app.rb <input_csv>
+      Given a file with a list of cost and payment pairs provide
+      the correct amount of change (in dollars, quarters, dimes, nickels and
+      pennies) to give to a customer.
+
+      If the cost is divisible by three the change produced will be randomly
+      distributed (but still exact change) otherwise the change will be given
+      in the fewest coins possible.
+    EOF
   end
 
   def process(change_array)
