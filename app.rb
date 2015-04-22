@@ -35,6 +35,9 @@ class App
       next unless well_formed?(row)
       cost = row[0].money_to_i
       payment = row[1].money_to_i
+
+      next unless payment > cost
+
       if (cost % 3) == 0
         change_array << Remainder.new(payment - cost, true)
       else
