@@ -15,16 +15,9 @@ class Coin
   end
 
   def amount_covered(change_owed)
-    while acceptable_change?(change_owed)
-      increment
-      change_owed -= @value
-    end
+    @count = change_owed / @value
 
     @count * @value
-  end
-
-  def increment
-    @count += 1
   end
 
   def to_s

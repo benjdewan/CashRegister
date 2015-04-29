@@ -63,7 +63,7 @@ describe Coin do
       it { should == 0 }
     end
 
-    describe '#increment calls from #amount_covered' do
+    describe '@count changes from #amount_covered' do
       subject do
         coin = Coin.new(name, value)
         coin.amount_covered(change_owed)
